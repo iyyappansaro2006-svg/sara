@@ -1,23 +1,10 @@
-name: Secure Workflow Example
+name: CI
 
-on:
-  push:
-    branches: [ "main" ]
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-
-    - name: Use Secrets Safely
-      run: |
-        echo "Running secure process..."
-        echo "API Key is hidden"
-
-        # Use secret as environment variable
-        curl -H "Authorization: Bearer $API_KEY" https://api.example.com/data
-      env:
-        API_KEY: ${{ secrets.API_KEY }}
+      - name: Checkout
+        uses: actions/checkout@v3
